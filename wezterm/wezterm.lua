@@ -6,7 +6,8 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 config.font_size = 15
-config.color_scheme = 'Moonlight'
+config.color_scheme = 'Mirage'
+config.window_opacity = 0.95
 
 config.font = wezterm.font 'CodeNewRoman Nerd Font Mono'
 
