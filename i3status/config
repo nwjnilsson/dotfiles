@@ -17,20 +17,20 @@ general {
 }
 
 order += "volume master"
-order += "wireless _first_"
+# order += "wireless _first_"
 order += "disk /"
 order += "memory"
 order += "cpu_temperature 0"
 order += "tztime localdate"
-order += "battery 1"
-order += "tztime localtime"
+# order += "battery 1"
 # order += "load"
 # order += "cpu_usage"
 # order += "disk /home"
 # order += "ipv6"
 # order += "run_watch VPN"
-# order += "ethernet eno16777736"
+order += "ethernet enp0s3"
 # order += "run_watch DHCP"
+order += "tztime localtime"
 
 volume master {
         format = "<span color='#00BFA5' size='large'> </span> <span bgcolor='#00BFA5' foreground='black'> %volume </span>"
@@ -96,7 +96,7 @@ run_watch VPN {
 }
 
 
-ethernet eno16777736 {
+ethernet enp0s3 {
         # if you use %speed, i3status requires root privileges
         format_up = " %ip "
         format_down = "  "

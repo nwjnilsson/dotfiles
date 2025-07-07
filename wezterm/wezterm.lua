@@ -7,7 +7,7 @@ config.initial_rows = 28
 
 config.font_size = 15
 config.color_scheme = 'Mirage'
-config.window_opacity = 0.95
+config.window_background_opacity = 0.95
 
 config.font = wezterm.font 'CodeNewRoman Nerd Font Mono'
 
