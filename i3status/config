@@ -20,8 +20,7 @@ order += "volume master"
 # order += "wireless _first_"
 order += "disk /"
 order += "memory"
-order += "cpu_temperature 0"
-order += "tztime localdate"
+# order += "cpu_temperature 0"
 # order += "battery 1"
 # order += "load"
 # order += "cpu_usage"
@@ -30,10 +29,11 @@ order += "tztime localdate"
 # order += "run_watch VPN"
 order += "ethernet enp0s3"
 # order += "run_watch DHCP"
+order += "tztime localdate"
 order += "tztime localtime"
 
 volume master {
-        format = "<span color='#00BFA5' size='large'> </span> <span bgcolor='#00BFA5' foreground='black'> %volume </span>"
+        format = "<span color='#00BFA5' size='large'>  </span> <span bgcolor='#00BFA5' foreground='black'> %volume </span>"
         format_muted = "<span color='#D32F2F'> %volume</span>"
         device = "default"
         mixer = "Master"
@@ -41,29 +41,29 @@ volume master {
 }
 
 wireless _first_ {
-        format_up = "<span color='#3498DB' size='large'> </span> <span bgcolor='#3498DB' foreground='black'>%quality %essid </span>"
-        format_down = "<span color='#D32F2F'>  Offline</span>"
+        format_up = "<span color='#3498DB' size='large'>  </span> <span bgcolor='#3498DB' foreground='black'>%quality %essid </span>"
+        format_down = "<span color='#D32F2F'>   Offline</span>"
 }
 
 
 disk "/" {
-        format = "<span color='#27AE60' size='large'> </span> <span bgcolor='#27AE60' foreground='black'> %avail </span>"
+        format = "<span color='#27AE60' size='large'>  </span> <span bgcolor='#27AE60' foreground='black'> %avail </span>"
         prefix_type = custom
 }
 
 memory {
-        format = "<span color='#8E44AD' size='large'> </span> <span bgcolor='#8E44AD' foreground='white'> %used </span>"
+        format = "<span color='#8E44AD' size='large'>  </span> <span bgcolor='#8E44AD' foreground='white'> %used </span>"
         threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 }
 
 cpu_temperature 0 {
-        format = "<span color='#D35400' size='large'>󱠇 </span> <span bgcolor='#D35400' foreground='white'> %degrees °C </span>"
+        format = "<span color='#D35400' size='large'> 󱠇 </span> <span bgcolor='#D35400' foreground='white'> %degrees °C </span>"
         max_threshold = 50
 }
 
 tztime localdate {
-        format = "<span color='#F39C12' size='large'> </span> <span bgcolor='#F39C12' foreground='black'> %a %d-%m-%Y </span>"
+        format = "<span color='#F39C12' size='large'>  </span> <span bgcolor='#F39C12' foreground='black'> %a %d-%m-%Y </span>"
 }
 
 battery 1 {
@@ -76,10 +76,6 @@ battery 1 {
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
         last_full_capacity = true
-}
-
-tztime localtime {
-        format = "<span color='#00dddd' size='large'>  </span><span bgcolor='#00dddd' foreground='black'> %I:%M %p </span> "
 }
 
 disk "/home" {
@@ -98,8 +94,8 @@ run_watch VPN {
 
 ethernet enp0s3 {
         # if you use %speed, i3status requires root privileges
-        format_up = " %ip "
-        format_down = "  "
+        format_up = "<span color='#3498DB' size='large'>  </span> <span bgcolor='#3498DB' foreground='black'> %ip </span>"
+        format_down = "<span color='#D32F2F'>  Not connected</span>"
 }
 
 cpu_usage {
@@ -110,3 +106,8 @@ load {
         format = "  %1min "
         max_threshold = 5
 }
+
+tztime localtime {
+        format = "<span color='#00dddd' size='large'>  </span> <span bgcolor='#00dddd' foreground='black'> %I:%M </span>"
+}
+

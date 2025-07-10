@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $super Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -24,11 +25,15 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Edit: using xfce lock instead
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+# Launch compositor
+exec --no-startup-id picom
 
 # Use pactl to adjust volume in PipeWire.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -158,6 +163,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Toggle language
+# bindsym $mod+Control+k exec setxkbmap -option 'grp:alt_shift_toggle'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -185,6 +192,28 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# These may need to be updated depending on the distro
+set $lock loginctl lock-session
+set $logout xfce4-session-logout
+set $suspend $lock && systemctl suspend
+set $hibernate $lock && systemctl hibernate
+set $reboot systemctl reboot 
+set $poweroff systemctl reboot 
+set $mode_system System (l) lock (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+        bindsym l exec --no-startup-id $lock , mode "default"
+        bindsym e exec --no-startup-id $logout, mode "default"
+        bindsym s exec --no-startup-id $suspend, mode "default"
+        bindsym h exec --no-startup-id $hibernate, mode "default"
+        bindsym r exec --no-startup-id $reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id $poweroff, mode "default"
+        # Bail
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Control+q mode "$mode_system"
+
 
 # exec_always --no-startup-id nitrogen --set-zoom-fill --random ~/Pictures/Wallpapers/
 exec_always --no-startup-id nitrogen --restore
