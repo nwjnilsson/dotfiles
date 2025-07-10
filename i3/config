@@ -193,26 +193,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# These may need to be updated depending on the distro
-set $lock loginctl lock-session
-set $logout xfce4-session-logout
-set $suspend $lock && systemctl suspend
-set $hibernate $lock && systemctl hibernate
-set $reboot systemctl reboot 
-set $poweroff systemctl reboot 
-set $mode_system System (l) lock (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-        bindsym l exec --no-startup-id $lock , mode "default"
-        bindsym e exec --no-startup-id $logout, mode "default"
-        bindsym s exec --no-startup-id $suspend, mode "default"
-        bindsym h exec --no-startup-id $hibernate, mode "default"
-        bindsym r exec --no-startup-id $reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id $poweroff, mode "default"
-        # Bail
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+Control+q mode "$mode_system"
+# Logout, suspend etc.
+bindsym $mod+Control+q exec --no-startup-id xfce4-session-logout
 
 
 # exec_always --no-startup-id nitrogen --set-zoom-fill --random ~/Pictures/Wallpapers/
