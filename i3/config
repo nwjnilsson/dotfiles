@@ -35,6 +35,13 @@ exec --no-startup-id nm-applet
 # Launch compositor
 exec --no-startup-id picom
 
+# Restore state
+# exec_always --no-startup-id nitrogen --set-zoom-fill --random ~/Pictures/Wallpapers/
+exec_always --no-startup-id "[ -f ~/.config/i3/workspace-monitors.conf ] && cat ~/.config/i3/workspace-monitors.conf > /tmp/i3-workspaces.conf || touch /tmp/i3-workspaces.conf"
+include /tmp/i3-workspaces.conf
+exec --no-startup-id ~/.config/i3/restore-workspaces.sh
+exec_always --no-startup-id sleep 2; nitrogen --restore
+
 # Use pactl to adjust volume in PipeWire.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $refresh_i3status
@@ -196,9 +203,6 @@ bindsym $mod+r mode "resize"
 # Logout, suspend etc.
 bindsym $mod+Control+q exec --no-startup-id xfce4-session-logout
 
-
-# exec_always --no-startup-id nitrogen --set-zoom-fill --random ~/Pictures/Wallpapers/
-exec_always --no-startup-id nitrogen --restore
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

@@ -1,0 +1,18 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "none",
+    "current_border_width": 3,
+    "floating": "user_off",
+    "marks": [],
+    "name": "Web",
+    "percent": 1,
+    "swallows": [
+       {
+       // "class": "^librewolf$",
+       // "instance": "^Navigator$",
+        "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+

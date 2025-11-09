@@ -1,0 +1,33 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "marks": [],
+    "name": "Term 1",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^Alacritty$",
+       "instance": "^Alacritty$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 3,
+    "floating": "auto_off",
+    "marks": [],
+    "name": "Term 2",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^Alacritty$",
+       "instance": "^Alacritty$"
+       }
+    ],
+    "type": "con"
+}
+
