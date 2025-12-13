@@ -24,13 +24,6 @@ vim.keymap.set("n", "<Down>", "<C-w>j")
 vim.keymap.set("n", "<Up>", "<C-w>k")
 vim.keymap.set("n", "<Right>", "<C-w>l")
 
--- Debugger
-vim.keymap.set("n", "<C-Left>", ":DapStepOut<CR>")
-vim.keymap.set("n", "<C-Down>", ":DapStepOver<CR>")
-vim.keymap.set("n", "<C-Up>", ":DapRestartFrame<CR>")
-vim.keymap.set("n", "<C-Right>", ":DapStepInto<CR>")
-vim.keymap.set("n", "<C-b>", ":DapToggleBreakpoint<CR>")
-
 -- Open terminal
 vim.keymap.set("n", "<A-t>", "<cmd>terminal<CR>i")
 -- Leave terminal

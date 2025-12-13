@@ -17,13 +17,6 @@ return {
   },
   'rebelot/kanagawa.nvim',
   'nmac427/guess-indent.nvim',
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      "theHamsta/nvim-dap-virtual-text"
-    },
-    event = 'UIEnter',
-  },
   'ThePrimeagen/harpoon',
   'rstacruz/vim-closer',
   'mbbill/undotree',
@@ -54,13 +47,4 @@ return {
       { 'L3MON4D3/LuaSnip' },     -- Required
     },
   },
-  {
-    'greggh/claude-code.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- Required for git operations
-    },
-    config = function()
-      require("claude-code").setup()
-    end
-  }
 }
