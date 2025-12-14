@@ -25,8 +25,11 @@ font pango:DejaVu Sans Mono 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# Edit: using xfce lock instead
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Edit: using xfce lock instead
+# Make floating to prevent login not showing
+for_window [class="xfce4-screensaver"] floating enable
+for_window [title="Unlock"] floating enable
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -202,6 +205,8 @@ bindsym $mod+r mode "resize"
 
 # Logout, suspend etc.
 bindsym $mod+Control+q exec --no-startup-id xfce4-session-logout
+# Lock screen
+bindsym $super+l exec --no-startup-id xfce4-screensaver-command -l
 
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
